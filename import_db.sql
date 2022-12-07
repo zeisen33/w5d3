@@ -14,7 +14,7 @@ CREATE TABLE questions (
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
     body VARCHAR(255),
-    author VARCHAR(255),
+    author INTEGER,
     FOREIGN KEY (author) REFERENCES users(id)
 );
 CREATE TABLE question_follows (

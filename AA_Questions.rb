@@ -32,7 +32,7 @@ class User
             INSERT INTO
                 users (fname, lname)
             VALUES
-                (?, ?, ?)
+                (?, ?)
         SQL
         @id = QuestionsDatabase.instance.last_insert_row_id
     end
@@ -50,3 +50,26 @@ class User
     end
 end
 
+class Question
+    def self.all
+        data = QuestionsDatabase.instance.execute("SELECT * FROM questions")
+        data.map { |datum| Question.new(datum)}
+    end
+
+    def initialize (options)
+        @title = options['title']
+        @body = options['body']
+        @author = options['author']
+    end
+
+    def self.find_by_author_id(author_id)
+        QuestionsDatabase.instance.execute(<<-SQL)
+            SELECT
+                *
+            FROM
+                questions
+            WHERE
+                questions.author = author_id;
+        SQL
+    end
+end
