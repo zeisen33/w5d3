@@ -1,4 +1,4 @@
-
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
@@ -36,17 +36,13 @@ CREATE TABLE question_likes(
     FOREIGN KEY (question_id) REFERENCES questions(id)
 )
 
+INSERT INTO
+    users (fname, lname)
+VALUES
+    ('Adam', 'Smith')
+    ('Jane', 'Doe');
 
-
-
-
-
-
-
-
-    body TEXT 
-    FOREIGN KEY (reply) REFERENCES questions(id)
-    parent_reply VARCHAR(255)
-    FOREIGN KEY (parent_reply) REFERENCES replies(id)
-)
-
+INSERT INTO
+    questions (title, body, author)
+VALUES
+    ('What is your name', )
